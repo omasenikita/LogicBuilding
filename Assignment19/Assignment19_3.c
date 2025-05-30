@@ -1,18 +1,22 @@
 ////////////////////////////////////////////////////////////
-// File Name :   Assignment19_1.c
-// Description : Used to count frequency of even numbers
+// File Name :   Assignment19_3.c
+// Description : Used to check whether 11 is present or not
 // Input :       integer Array , int   
-// Output :      int
+// Output :      boolean
 // Author :      Nikita Shahaji Omase
 // Date :        28/05/2025
 ///////////////////////////////////////////////////////////////
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<stdbool.h>
 
-int Frequency(int Arr[], int iNo)
+#define TRUE 1
+#define FALSE 0 
+
+bool Check(int Arr[], int iNo)
 {
-    int  iCnt = 0, iCount = 0;
+    int  iCnt = 0;
      
     if(Arr == NULL || iNo <= 0)
     {
@@ -20,20 +24,25 @@ int Frequency(int Arr[], int iNo)
     }
     for( iCnt = 0; iCnt < iNo; iCnt++)
     {
-        if((Arr[iCnt] % 2)== 0)
+        if(Arr[iCnt]== 11)
         {
-            iCount++;
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
         }
     }
 
-    return iCount;
+   
 
 }
 
 int main()
 {
-    int iSize = 0, iRet = 0, iCnt = 0;
-    int *Ptr = NULL;          // Pointer to hold the base address of dynamically allocated memory
+    int iSize = 0,  iCnt = 0;
+    int *Ptr = NULL;  
+    bool bRet = 0;        // Pointer to hold the base address of dynamically allocated memory
       
     printf("Enter a number : \n");
     scanf("%d",&iSize);
@@ -54,8 +63,15 @@ int main()
         scanf("%d", &Ptr[iCnt]);
     }
     
-    iRet = Frequency(Ptr,iSize);
-    printf("Frequency of even number is : %d\n", iRet);
+    bRet = Check(Ptr,iSize);
+    if(bRet == 1)
+    {
+        printf("11 is present in array");
+    }
+    else
+    {
+        printf("11 is not present in array");
+    }
 
     free(Ptr);
 

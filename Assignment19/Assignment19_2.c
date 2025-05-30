@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////
-// File Name :   Assignment19_1.c
-// Description : Used to count frequency of even numbers
+// File Name :   Assignment19_2.c
+// Description : Used to find the diffence between frequency of even numbers and odd numbers
 // Input :       integer Array , int   
 // Output :      int
 // Author :      Nikita Shahaji Omase
@@ -10,9 +10,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int Frequency(int Arr[], int iNo)
+int FrequencyDiff(int Arr[], int iNo)
 {
-    int  iCnt = 0, iCount = 0;
+    int  iCnt = 0, iEvenCount = 0,iOddCount = 0;
      
     if(Arr == NULL || iNo <= 0)
     {
@@ -22,11 +22,16 @@ int Frequency(int Arr[], int iNo)
     {
         if((Arr[iCnt] % 2)== 0)
         {
-            iCount++;
+            iEvenCount++;
         }
+        else
+        {
+            iOddCount++;
+        }
+
     }
 
-    return iCount;
+    return iEvenCount - iOddCount;
 
 }
 
@@ -54,8 +59,8 @@ int main()
         scanf("%d", &Ptr[iCnt]);
     }
     
-    iRet = Frequency(Ptr,iSize);
-    printf("Frequency of even number is : %d\n", iRet);
+    iRet = FrequencyDiff(Ptr,iSize);
+    printf("Frequency difference between  even numbers and odd numbers arenn : %d\n", iRet);
 
     free(Ptr);
 
